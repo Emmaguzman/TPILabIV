@@ -12,7 +12,8 @@ package Modelo;
 public class Persona {
     private int id;
     private String nombre,apellido,direccion,correo,telefono,dni,fechaNac;
-
+    
+    public Persona(){};
     public Persona(int id, String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac) {
         this.id = id;
         this.nombre = nombre;

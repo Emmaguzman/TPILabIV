@@ -5,27 +5,39 @@
  */
 package Modelo;
 
+import java.io.InputStream;
+import java.sql.Blob;
+
 /**
  *
  * @author denis
  */
 public class Empleado extends Persona {
 
-    private int idTipoEmpleado;
-    private String foto;
+    private int idTipoEmpleado;    
+    private InputStream foto;
 
-    public Empleado(int id, int idTipoEmpleado,String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac,String foto) {
+    public Empleado() {       
+    }
+
+    public Empleado(int id,int idTipoEmpleado, String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac, InputStream foto) {
         super(id, nombre, apellido, direccion, correo, telefono, dni, fechaNac);
         this.idTipoEmpleado = idTipoEmpleado;
         this.foto = foto;
     }
 
-    public Empleado(int idTipoEmpleado, String foto, String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac) {
+    public Empleado( String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac,int idTipoEmpleado, InputStream foto) {
         super(nombre, apellido, direccion, correo, telefono, dni, fechaNac);
         this.idTipoEmpleado = idTipoEmpleado;
         this.foto = foto;
     }
 
+    public Empleado( String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac,InputStream foto, int id) {
+        super(id, nombre, apellido, direccion, correo, telefono, dni, fechaNac);
+        this.foto = foto;
+    }
+
+    
     public int getIdTipoEmpleado() {
         return idTipoEmpleado;
     }
@@ -34,11 +46,11 @@ public class Empleado extends Persona {
         this.idTipoEmpleado = idTipoEmpleado;
     }
 
-    public String getFoto() {
+    public InputStream getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(InputStream foto) {
         this.foto = foto;
     }
 
@@ -46,5 +58,7 @@ public class Empleado extends Persona {
     public String toString() {
         return super.toString()+"Empleado{" + "idTipoEmpleado=" + idTipoEmpleado + ", foto=" + foto + '}';
     }
+    
+ 
 
 }

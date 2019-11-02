@@ -6,11 +6,10 @@
 package Servlet;
 
 import Connection.BDAccess;
-import java.awt.Image;
+
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 /**
  *
@@ -24,7 +23,7 @@ public class main {
         con.traerEmpleado("3");
         
         
-Image img;     
+ 
        
     }
 }
