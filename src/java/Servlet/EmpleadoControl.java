@@ -8,6 +8,7 @@ package Servlet;
 import Connection.BDAccess;
 import Modelo.Empleado;
 import Modelo.Persona;
+import Modelo.Tipo_Empleado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -58,7 +59,16 @@ public class EmpleadoControl extends HttpServlet {    // <editor-fold defaultsta
                 case "LISTA":
                     listaEmpleados(request, response);
                     mostrarImg(request, response);
-                    break;              
+                    break;           
+                case "LISTATIPOSE":
+                    listaTiposEmpleado(request,response);                    
+                    break;
+                case "ACTUALIZAE":
+                    actualizarEmpleado(request,response);
+                    break;
+                case "ELIMINARE":
+                    eliminarEmpleado(request,response);                    
+                    break;
                 default:
                     listaEmpleados(request, response);
                     break;
@@ -80,7 +90,45 @@ public class EmpleadoControl extends HttpServlet {    // <editor-fold defaultsta
         int id=Integer.parseInt(request.getParameter("id"));
         conn.listarImagenes(id, response);
     }
-   
+    private void listaTiposEmpleado(HttpServletRequest request, HttpServletResponse response) throws Exception {
+      ArrayList <Tipo_Empleado> lista=conn.listaTiposE();
+      request.setAttribute("ListaTiposE", lista);
+      RequestDispatcher rd = request.getRequestDispatcher("/agregarEmpleado.jsp");
+      rd.forward(request, response);      
+    }
+    private void actualizarEmpleado(HttpServletRequest request, HttpServletResponse response) throws Exception{
+      int id=Integer.parseInt(request.getParameter("idEmpelado"));
+      
+       String nombre=request.getParameter("txtNombre");
+       String apellido=request.getParameter("txtApellido");
+       String direccion=request.getParameter("txtDireccion");
+       String correo=request.getParameter("txtCorreo");
+       String dni=request.getParameter("txtDni");
+       String fechaN=request.getParameter("fechaN");  
+       
+      
+    }
+    private void agregarEmpleado(HttpServletRequest request, HttpServletResponse response) throws Exception{
+       String nombre=request.getParameter("txtNombre");
+       String apellido=request.getParameter("txtApellido");
+       String direccion=request.getParameter("txtDireccion");
+       String telefono=request.getParameter("txtTelefono");
+       String correo=request.getParameter("txtCorreo");
+       String dni=request.getParameter("txtDni");
+       String fechaN=request.getParameter("fechaN"); 
+       int idtipoEmpleado=Integer.parseInt(request.getParameter("idTipoE"));
+       
+       
+        Empleado p=new Empleado(nombre,apellido,direccion,correo,telefono,dni,fechaN,idtipoEmpleado);
+        conn.agregarEmpleado(p);
+        listaEmpleados(request, response);
+       
+        
+    }
+    private void eliminarEmpleado (HttpServletRequest request, HttpServletResponse response) throws Exception{
+    conn.eliminarEmpleado(request.getParameter("idEmpelado"));
+    listaEmpleados(request,response);    
+    }
     
 
 }
