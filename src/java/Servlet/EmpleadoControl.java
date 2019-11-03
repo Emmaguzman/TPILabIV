@@ -119,8 +119,8 @@ public class EmpleadoControl extends HttpServlet {    // <editor-fold defaultsta
        int idtipoEmpleado=Integer.parseInt(request.getParameter("idTipoE"));
        
        
-        Empleado p=new Empleado(nombre,apellido,direccion,correo,telefono,dni,fechaN,idtipoEmpleado);
-        conn.agregarEmpleado(p);
+        //Empleado p=new Empleado(nombre,apellido,direccion,correo,telefono,dni,fechaN,idtipoEmpleado);
+        //conn.agregarEmpleado(p);
         listaEmpleados(request, response);
        
         
