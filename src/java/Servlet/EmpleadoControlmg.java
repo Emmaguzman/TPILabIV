@@ -5,7 +5,7 @@
  */
 package Servlet;
 
-import Connection.BDAccess;
+import Connection.EmpleadoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "EmpleadoControlImg", urlPatterns = {"/EmpleadoControlImg"})
 public class EmpleadoControlmg extends HttpServlet {
-    BDAccess conn;
+    EmpleadoDAO conn;
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

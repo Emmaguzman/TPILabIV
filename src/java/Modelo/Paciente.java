@@ -11,6 +11,7 @@ package Modelo;
  */
 public class Paciente extends Persona{
 
+    public Paciente(){}
     public Paciente(int id, String nombre, String apellido, String direccion, String correo, String telefono, String dni, String fechaNac) {
         super(id, nombre, apellido, direccion, correo, telefono, dni, fechaNac);
     }

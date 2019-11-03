@@ -6,7 +6,7 @@
 package Connection;
 
 import Modelo.Empleado;
-import Modelo.Persona;
+import Connection.Conexion;
 import Modelo.Tipo_Empleado;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -31,14 +31,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author denis
  */
-public class BDAccess {
-
+public class EmpleadoDAO {
+    
     Connection conn;
     ResultSet rs;
     Statement st;
     PreparedStatement prep;
 
-    public void conectar() {
+    private void conectar() {
         final String URL = "jdbc:sqlserver://Gamex:1433;databaseName=centroMedicina";
         final String NOM = "Emma";
         final String PASS = "1234";
@@ -111,10 +111,10 @@ public class BDAccess {
         Empleado p = null;
         final String QUERY = "select * from empleados where idEmpleado=?";
         try {
-            int idPersona = Integer.parseInt(id);
+            int idEmpelado = Integer.parseInt(id);
             conectar();
             prep = conn.prepareStatement(QUERY);
-            prep.setInt(1, idPersona);
+            prep.setInt(1, idEmpelado);
             rs = prep.executeQuery();
             while (rs.next()) {
                 p = new Empleado(rs.getInt(1),
@@ -214,9 +214,9 @@ public class BDAccess {
             prep.setString(6, p.getTelefono());
             prep.setString(7, p.getDni());
             prep.setString(8, p.getFechaNac());
-            prep.setBlob(9, p.getFoto());            
+            prep.setBlob(9, p.getFoto());             
             
-            prep.execute();
+            prep.executeUpdate();
             inserto = true;
             System.out.println("Insercion Correcta");
         } catch (Exception e) {

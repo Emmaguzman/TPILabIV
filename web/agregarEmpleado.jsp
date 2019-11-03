@@ -21,17 +21,17 @@
     </head>
     <body>
         <h2 style="text-align: center">AgregarEmpleado</h2>
-        <form method="GET" action="EmpleadoControl">
-
+        <form method="GET" action="EmpleadoControl" enctype="multipart/form-data">
+         <input type="hidden" name="Comando" value="GUARDARE"/>
             <div class="row">
                 <div class="form-group col-md-6">                    
                     <label for="Nombre">Nombre</label>
-                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre">                    
+                    <input type="text" class="form-control" name="txtNombre" placeholder="Nombre">                    
 
                 </div>
                 <div class="form-group col-md-6">
                     <label for="Email">Apellido</label>
-                    <input type="Apellido" class="form-control" id="txtApellido" placeholder="Apellido">
+                    <input type="Apellido" class="form-control" name="txtApellido" placeholder="Apellido">
                 </div>
 
 
@@ -39,40 +39,40 @@
             <div class="row">
                 <div class="form-group col-md-6">                    
                     <label for="DNI">DNI</label>
-                    <input type="text" class="form-control" id="txtDNI" placeholder="DNI">
+                    <input type="text" class="form-control" name="txtDNI" placeholder="DNI">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="Email">Email</label>
-                    <input type="text" class="form-control" id="txtEmail" placeholder="Email">
+                    <input type="text" class="form-control" name="txtEmail" placeholder="Email">
                 </div>
             </div>
         </div>
         <div class='row'>
             <div class="col-md-6">
                 <label for="direccion">Direccion</label>
-                <input type="text" class="form-control" id="txtDireccion" placeholder="Los valles colorados 232 9'c'">
+                <input type="text" class="form-control" name="txtDireccion" placeholder="Los valles colorados 232 9'c'">
             </div>
             <div class="col-md-6">
                 <label for="telefono">Telefono</label>
-                <input type="text" class="form-control" id="txtDireccion" placeholder="Los valles colorados 232 9'c'">
+                <input type="text" class="form-control" name="txtTelefono" placeholder="Los valles colorados 232 9'c'">
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
                 <label for="TipoEmpleado">Tipo de Empleado</label>          
-                    <select class="form-control">Elije Opcion</option> 
-                    
-                    <c:forEach items="${ListaTiposE}" var="l">                            
-                        <option id="idTipoE" value='${l.id}'>
-                            ${l.descripcion}</option>                    
+                    <select name="idTipoE" class="form-control">
+                    <option value="99">Elije Opcion</option>                     
+                    <c:forEach items="${ListaTiposE}" var="lstTE">                            
+                        <option value='${lstTE.id}'>
+                            ${lstTE.descripcion}</option>                    
                     </c:forEach>
                         
                 </select>
             </div >
             <div class="col-md-6 ">                    
                 <label for="FechaN"> Fecha de Nacimiento</label> <br>                   
-                <input type="date" name="fecha" min="1800-03-25"
+                <input type="date" name="txtfecha" min="1800-03-25"
                        max="2018-05-25" step="2">                    
             </div>
         </div>
@@ -80,11 +80,12 @@
         <div class="row">
                <div class="col-md-6">
             <label foto=>Foto</label>
-            <input class="form-control-file" id="fotoIngreso" type="file">
+            <input class="form-control-file" name="fotoIngreso" type="file">
                </div>
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Agregar</button>
+        <p><a href="EmpleadoControl">Volver A Lista</a></p>
     </form>
 </body>
 </html>

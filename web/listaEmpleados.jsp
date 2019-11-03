@@ -14,7 +14,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista Empleados</title>
     </head>
-    <body>        
+    <body>
+        
+        <c:url var="AgregarE" value="EmpleadoControl"> 
+            <c:param name="Comando" value="AGREGARE"/>
+        </c:url>
+        <a href="${AgregarE}">Agregar</a>
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -37,7 +42,7 @@
                         <c:param name="Comando" value="ACTUALIZAE"/>
                         <c:param name="idEmpleado" value="${p.id}"/>
                     </c:url>
-                     <c:url var="eliminaELink" value="EmpleadoControl">
+                    <c:url var="eliminaELink" value="EmpleadoControl">
                         <c:param name="Comando" value="ELIMINARE" />
                         <c:param name="idEmpelado" value="${p.id}" />
                     </c:url>
@@ -53,13 +58,14 @@
                         <td>${p.idTipoEmpleado}</td>
                         <td><img src="EmpleadoControlImg?id=${p.id}" width="100" height="100"></td>
                         <td><a href="${actualizaELink}">Actualizar</a>
-                <a href="${eliminaELink}"onclick="if (!(confirm('Esta seguro que quiere eliminar a este empleado?')))return false">Eliminar</a> </td>
+                            <a href="${eliminaELink}"onclick="if (!(confirm('Esta seguro que quiere eliminar a este empleado?')))
+                                        return false">Eliminar</a> 
+                        </td>
                     </tr>
-                
+
                 </c:forEach>
             </tbody>
 
         </table>
-
     </body>
 </html>
