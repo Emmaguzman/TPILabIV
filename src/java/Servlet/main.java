@@ -39,14 +39,14 @@ public class main {
 
 //boolean x=conp.agregarPaciente(new Paciente("Pipi","Guzman","PORACA","NOTIENE@cagate","2999292","011100","19910131"));
 //        System.out.println(x);
-//            ArrayList<Paciente> lista=conp.listarPacientes();
-//       
-//        for (Paciente p : lista) {
-//            System.out.println(p.toString());
-//            
-//        }
+            ArrayList<Paciente> lista=conp.listarPacientes();
+       
+        for (Paciente p : lista) {
+            System.out.println(p.toString());
+            
+        }
 //
 ////conp.eliminarPaciente("2");
-conp.traerPaciente("3");
+ //conp.actualizarPaciente(new Paciente(3,"pepe","grillo","laesquina","pepegri@gilada","32131","dsada","2010-01-01"));
 }
 }

@@ -133,14 +133,7 @@ public class PacienteDAO {
     }
 
     public void actualizarPaciente(Paciente p) {
-        final String QUERY = "update Pacientes set nombres=?,"
-                                                + "apellidos=?,"                                             
-                                                + "direccion=?,"
-                                                + "correo=?,"
-                                                + "telefono=?,"
-                                                + "dni=?,"
-                                                + "fechaNacimiento=?"
-                                                +"where id=?";
+        final String QUERY = "update Pacientes set nombres=?,apellidos=?,direccion=?,correo=?,telefono=?,DNI=?,fechaNacimiento=? where idPaciente=?";
         conectar();
         try {
             prep=conn.prepareStatement(QUERY);
@@ -151,7 +144,10 @@ public class PacienteDAO {
             prep.setString(5, p.getTelefono());
             prep.setString(6, p.getDni());
             prep.setString(7, p.getFechaNac());
+            
             prep.setInt(8,p.getId());
+            
+            prep.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
